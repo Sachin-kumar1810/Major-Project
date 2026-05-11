@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.16.2",
     "accepts": "^2.0.0",
     "append-field": "^1.0.0",
     "arrify": "^1.0.1",
@@ -208,7 +209,7 @@
   },
   "scripts": {
     "start": "node app.js",
-  "dev": "nodemon app.js"
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
