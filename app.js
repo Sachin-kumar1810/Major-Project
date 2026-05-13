@@ -127,6 +127,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
+const adminRoutes = require("./routes/admin");
 
 const expressError = require("./utils/expressError.js");
 
@@ -160,6 +161,8 @@ main()
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+app.use("/admin", adminRoutes);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -210,6 +213,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.currUser = req.user;
+    res.locals.session = req.session;
 
     next();
 });

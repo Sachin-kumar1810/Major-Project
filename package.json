@@ -127,6 +127,7 @@
     "multer": "^2.1.1",
     "multer-storage-cloudinary": "^4.0.0",
     "negotiator": "^1.0.0",
+    "nodemailer": "^8.0.7",
     "normalize-package-data": "^3.0.3",
     "normalize-url": "^6.1.0",
     "object-inspect": "^1.13.4",
