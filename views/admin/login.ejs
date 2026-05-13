@@ -1,31 +1,47 @@
-<% layout("/layouts/boilerplate") %>
+<%- include("../includes/head.ejs") %>
 
-<div class="row mt-5">
-    <div class="col-6 offset-3">
-        <h3>Admin Login</h3>
+<body>
 
-        <form method="POST" action="/admin/login">
-            <div class="mb-3">
-                <label>Username</label>
-                <input 
-                    type="text" 
-                    name="username" 
-                    class="form-control"
-                >
+    <div class="container mt-5">
+
+        <div class="row">
+            <div class="col-6 offset-3">
+
+                <h2 class="mb-4">Admin Login</h2>
+
+                <form action="/admin/login" method="POST">
+
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+
+                        <input 
+                            type="text"
+                            name="username"
+                            class="form-control"
+                            required
+                        >
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+
+                        <input 
+                            type="password"
+                            name="password"
+                            class="form-control"
+                            required
+                        >
+                    </div>
+
+                    <button class="btn btn-dark">
+                        Login
+                    </button>
+
+                </form>
+
             </div>
+        </div>
 
-            <div class="mb-3">
-                <label>Password</label>
-                <input 
-                    type="password" 
-                    name="password" 
-                    class="form-control"
-                >
-            </div>
-
-            <button class="btn btn-dark">
-                Login
-            </button>
-        </form>
     </div>
-</div>
+
+</body>

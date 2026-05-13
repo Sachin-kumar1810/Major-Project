@@ -5,7 +5,7 @@ const User = require("../models/user");
 const nodemailer = require("nodemailer");
 
 router.get("/login", (req, res) => {
-    res.render("admin/login.ejs");
+    res.render("admin/login");
 });
 
 router.post("/login", (req, res) => {
