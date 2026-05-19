@@ -41,23 +41,28 @@ router.delete("/listing/:id", async (req, res) => {
     const userEmail = listing.owner.email;
 
     let transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-            user: process.env.ADMIN_EMAIL,
-            pass: process.env.ADMIN_EMAIL_PASS,
-        },
-    });
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+        user: process.env.ADMIN_EMAIL,
+        pass: process.env.ADMIN_EMAIL_PASS,
+    },
+    connectionTimeout: 10000,
+});
 
-    await transporter.sendMail({
-        from: process.env.ADMIN_EMAIL,
-        to: userEmail,
-        subject: "Listing Removed",
-        text: `Hello,
+await transporter.verify();
+
+await transporter.sendMail({
+    from: process.env.ADMIN_EMAIL,
+    to: userEmail,
+    subject: "Listing Removed",
+    text: `Hello,
 
 Your uploaded listing "${listing.title}" has been removed by admin because the content was not appropriate.
 
 Thank you.`,
-    });
+});
 
     await Listing.findByIdAndDelete(req.params.id);
 
