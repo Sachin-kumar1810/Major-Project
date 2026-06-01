@@ -54,7 +54,7 @@ router.delete("/listing/:id", async (req, res) => {
         const userEmail = listing.owner.email;
 
         // Nodemailer Transport
-       let transporter = nodemailer.createTransport({
+    let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
     secure: true,
@@ -64,6 +64,12 @@ router.delete("/listing/:id", async (req, res) => {
         pass: process.env.ADMIN_EMAIL_PASS,
     },
 });
+
+await transporter.sendMail({
+    from: process.env.ADMIN_EMAIL,
+    to: userEmail,
+    },
+);
 
 await transporter.sendMail({
     from: process.env.ADMIN_EMAIL,
